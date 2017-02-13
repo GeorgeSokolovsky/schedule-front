@@ -6,8 +6,8 @@ import { ScheduleComponent } from './schedule.component';
 
 const routes: Routes = [
   { path: '', component: TeamsComponent },
-  { path: 'domain/teams', component: TeamsComponent },
-  { path: 'domain/schedule', component: ScheduleComponent }
+  { path: 'teams', component: TeamsComponent },
+  { path: 'schedule', component: ScheduleComponent }
 ];
 
 @NgModule({
