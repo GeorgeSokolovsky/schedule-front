@@ -4,11 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { TeamsComponent } from './teams.component';
+import { ScheduleComponent } from './schedule.component';
+
 import { AppRoutingModule } from './app.routes';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeamsComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,
