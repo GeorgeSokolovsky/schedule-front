@@ -9,6 +9,7 @@ import { ScheduleComponent } from './sections/schedule/schedule.component';
 import { TeamListComponent } from './sections/teams/team-list.component';
 import { AppRoutingModule } from './app.routes';
 import { HeaderComponent } from './sections/header/header.component';
+import { TeamsService } from './services/teams/teams.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { HeaderComponent } from './sections/header/header.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    TeamsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
