@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { TeamsComponent } from './teams.component';
-import { ScheduleComponent } from './schedule.component';
+import { TeamsComponent } from './teams/teams.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { TeamListComponent } from './teams/team-list.component';
 
 import { AppRoutingModule } from './app.routes';
 
@@ -13,7 +14,8 @@ import { AppRoutingModule } from './app.routes';
   declarations: [
     AppComponent,
     TeamsComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    TeamListComponent
   ],
   imports: [
     BrowserModule,

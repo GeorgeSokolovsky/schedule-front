@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TeamsComponent } from './teams.component';
-import { ScheduleComponent } from './schedule.component';
+import { TeamsComponent } from './teams/teams.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 const routes: Routes = [
   { path: '', component: TeamsComponent },
