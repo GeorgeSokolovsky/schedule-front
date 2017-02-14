@@ -4,15 +4,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { TeamsComponent } from './teams/teams.component';
-import { ScheduleComponent } from './schedule/schedule.component';
-import { TeamListComponent } from './teams/team-list.component';
-
+import { TeamsComponent } from './sections/teams/teams.component';
+import { ScheduleComponent } from './sections/schedule/schedule.component';
+import { TeamListComponent } from './sections/teams/team-list.component';
 import { AppRoutingModule } from './app.routes';
+import { HeaderComponent } from './sections/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     TeamsComponent,
     ScheduleComponent,
     TeamListComponent

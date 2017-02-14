@@ -1,0 +1,15 @@
+.nav {
+    clear: both;
+}
+
+li {
+    display: inline;
+}
+
+a {
+    text-decoration: none;
+}
+
+.active a {
+    color: red;
+}

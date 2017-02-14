@@ -1,8 +1,0 @@
-// Поместите параметры в этот файл, чтобы перезаписать параметры по умолчанию и пользовательские параметры.
-{
-  {
-    "git.confirmSync": false,
-    "editor.tabSize": 2,
-    "editor.detectIndentation": true
-  }
-}
