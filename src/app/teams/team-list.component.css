@@ -1,31 +1,31 @@
 .team-list {
-    position: relative;
-    float: right;
-    top: -100px;
-    width: 200px;
-    overflow: auto;
-    height: 99vh;
+	position: relative;
+	float: right;
+	top: -100px;
+	width: 200px;
+	overflow: auto;
+	height: 99vh;
 }
 
 h2 {
-    text-align: center;
+	text-align: center;
 }
 
 li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    margin: .5em;
-    height: 1.6em;
-    border-radius: 4px;
-    list-style: none;
-  }
+	cursor: pointer;
+	position: relative;
+	left: 0;
+	margin: .5em;
+	height: 1.6em;
+	border-radius: 4px;
+	list-style: none;
+}
 
 .badge {
-    display: inline-block;   
-    position: relative;
-    left: -1px;
-    height: 1.8em;
-    margin-right: .8em;
-    width: 5em;
-  }
+	display: inline-block;   
+	position: relative;
+	left: -1px;
+	height: 1.8em;
+	margin-right: .8em;
+	width: 5em;
+	}
