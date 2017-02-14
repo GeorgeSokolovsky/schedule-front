@@ -1,0 +1,12 @@
+
+    <form [formGroup]="form" (submit)="create(titelName.value,titelCount.value)">
+            <p>
+                <input type="text" placeholder="Название" #titelName>
+            </p>
+            <p>
+                <input type="text" placeholder="Количество участников" #titelCount>
+            </p>
+            <p>
+                <button type="submit">Создать</button> 
+            </p>  
+    </form>
