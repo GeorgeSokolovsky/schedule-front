@@ -1,12 +1,12 @@
 
-    <form [formGroup]="form" (submit)="create(titelName.value,titelCount.value)">
+    <form [formGroup]="form" (submit)="create()">
             <p>
-                <input type="text" placeholder="Название" #titelName>
+                <input type="text" placeholder="Название" formControlName="name">
             </p>
             <p>
-                <input type="text" placeholder="Количество участников" #titelCount>
+                <input type="text" placeholder="Количество участников" formControlName="count">
             </p>
             <p>
-                <button type="submit">Создать</button> 
+                <button type="submit" [disabled]="!form.valid">Создать</button> 
             </p>  
     </form>

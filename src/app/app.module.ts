@@ -16,9 +16,9 @@ import { TodoFormComponent } from './todo-forms/todo-form.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
