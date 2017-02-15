@@ -32,7 +32,7 @@ export class BaseService<T extends Entity> {
    * @return {Observable<T>}
    */
   public read(id: number): Observable<T> {
-    return this.httpInstance.get(this.constructUrl() + id)
+    return this.httpInstance.get(`${this.constructUrl()}/${id}`)
       .map((response: Response) => new this.model(response.json()));
   }
 
@@ -44,7 +44,7 @@ export class BaseService<T extends Entity> {
    * @return {Observable<T>}
    */
   public update(model: T): Observable<T> {
-    return this.httpInstance.put(this.constructUrl() + model.id, model)
+    return this.httpInstance.put(`${this.constructUrl()}/${model.id}`, model)
       .map((response: Response) => new this.model(response.json()));
   }
 
@@ -56,7 +56,7 @@ export class BaseService<T extends Entity> {
    * @return {Observable<any>}
    */
   public remove(id: number): Observable<any> {
-    return this.httpInstance.delete(this.constructUrl() + id)
+    return this.httpInstance.delete(`${this.constructUrl()}/${id}`)
       .map((response: Response) => response.json());
   }
 
