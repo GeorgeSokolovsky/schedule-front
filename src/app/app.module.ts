@@ -4,23 +4,30 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { TeamsComponent } from './sections/teams/teams.component';
+import { ScheduleComponent } from './sections/schedule/schedule.component';
+import { TeamListComponent } from './sections/teams/team-list.component';
 import { AppRoutingModule } from './app.routes';
-
-import { ReactiveFormsModule } from '@angular/forms';
-import { TodoFormComponent } from './todo-forms/todo-form.component';
+import { HeaderComponent } from './sections/header/header.component';
+import { TeamsService } from './services/teams/teams.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoFormComponent
+    HeaderComponent,
+    TeamsComponent,
+    ScheduleComponent,
+    TeamListComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule,
-    AppRoutingModule,
-    ReactiveFormsModule
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    TeamsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
