@@ -1,7 +1,15 @@
-li{
-    list-style-type: none;
+li {
+  list-style-type: none;
+  display: inline-block;
+  width: 100%;
 }
 
-/*button:focus{
-    outline: none;
-}*/
+a {
+  float: right;
+  margin-left: 10px;
+}
+
+span {
+    display: block;
+    margin-top: 6px;
+}

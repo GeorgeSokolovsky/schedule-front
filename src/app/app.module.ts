@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { AppComponent } from './app.component';
 import { TeamsComponent } from './sections/teams/teams.component';
@@ -28,7 +29,8 @@ import { TeamFormComponent } from './sections/teams/team-form/team-form.componen
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SimpleNotificationsModule.forRoot()
   ],
   providers: [
     TeamsService
