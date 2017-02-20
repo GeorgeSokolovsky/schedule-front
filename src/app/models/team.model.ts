@@ -10,8 +10,8 @@ import { Responsibility } from '../enums/responsibility.enum';
  * @extends Entity
  */
 export class Team extends Entity {
-  public instructors: Array<Instructor>;
-  private responsibility: Responsibility;
+  public instructors: Array<Instructor> = [];
+  public responsibility: Responsibility;
 
   public constructor(params?: any) {
     super(params);
