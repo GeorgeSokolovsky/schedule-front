@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TeamsComponent } from './sections/teams/teams.component';
 import { ScheduleComponent } from './sections/schedule/schedule.component';
+import { DocumentsComponent } from './sections/documents/documents.component';
 
 const routes: Routes = [
   { path: '', component: TeamsComponent },
   { path: 'teams', component: TeamsComponent },
-  { path: 'schedule', component: ScheduleComponent }
+  { path: 'schedule', component: ScheduleComponent },
+  { path: 'documents', component: DocumentsComponent }
 ];
 
 @NgModule({
