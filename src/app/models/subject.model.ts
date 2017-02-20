@@ -8,7 +8,7 @@ import { Entity } from './entity.model';
  */
 export class Subject extends Entity {
   public name: string;
-  private shortName: string;
+  public shortName: string;
 
   public constructor(params?: any) {
     super(params);

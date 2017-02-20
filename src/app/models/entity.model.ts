@@ -14,13 +14,4 @@ export class Entity {
       }
     });
   }
-
-  /**
-   * Утилитный метод, который возвращает имя класса
-   *
-   * @return {string}
-   */
-  public getClassName(): string {
-    return this.constructor.toString().match(/\w+/g)[1];
-  }
 }

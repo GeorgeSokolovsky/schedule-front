@@ -1,28 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-class Team {
-  id: number;
-  name: string;
-  amount: number;
-}
-
-const teams:Team[] = [
-  {
-    id: 1,
-    name: 'Cscharp',
-    amount: 25
-  },
-  {
-    id: 2,
-    name: 'Java',
-    amount: 17
-  },
-  {
-    id: 3,
-    name: 'JavaScript',
-    amount: 21
-  }
-];
+import { Team } from '../../../models/team.model';
+import { TeamsService } from '../../../services/teams/teams.service';
+import { ConfirmComponent } from '../../../shared/modals/confirm.modal';
 
 @Component({
   moduleId: module.id,
@@ -30,6 +10,30 @@ const teams:Team[] = [
   templateUrl: 'team-list.component.html',
   styleUrls: ['team-list.component.css']
 })
-export class TeamListComponent {
-  teams: Team[] = teams; 
+export class TeamListComponent implements OnInit{
+  public teams: Array<Team>;
+
+  @ViewChild('confirm') public confirmComponent: ConfirmComponent;
+
+  public constructor(private teamService: TeamsService){}
+
+  public ngOnInit(): void {
+    this.teams = this.teamService.getTestData();
+  }
+
+  public editTeam(team: Team): void {
+    this.confirmComponent
+      .show(`Вы действительно хотите отредактировать команду номер ${team.id}`)
+      .subscribe((result: boolean) => {
+        console.log(`Попытка отредактировать команду номер ${team.id} с результатом ${result}`);
+      });
+  }
+
+  public removeTeam(team: Team): void {
+    this.confirmComponent
+      .show(`Вы действительно хотите удалить команду номер ${team.id}`)
+      .subscribe((result: boolean) => {
+        console.log(`Попытка удалить команду номер ${team.id} с результатом ${result}`);
+      });
+  }
 }

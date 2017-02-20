@@ -1,10 +1,17 @@
 <div>
-	<h2>Teams</h2>
+  <h2>Teams</h2>
   <ul>
-  	<li *ngFor="let team of teams">
-    	<div>
-      	<span class="badge">{{team.name}}</span> {{team.amount}}
+    <li *ngFor="let team of teams">
+      <div>
+        <span class="badge">{{team.id}}</span>
+        <i class="glyphicon glyphicon-pencil" (click)="editTeam(team)"></i>
+        <i class="glyphicon glyphicon-remove" (click)="removeTeam(team)"></i>
+          <ul>
+            <li *ngFor="let instructor of team.instructors"> {{ instructor.shortName }}</li>
+          </ul>
       </div>
     </li>
   </ul>
 </div>
+
+<confirm #confirm></confirm>

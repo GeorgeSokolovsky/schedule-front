@@ -1,11 +1,25 @@
 <form [formGroup]="form" (submit)="create($event)">
   <div class="form-group">
-    <label for="name">Имя</label>
-    <input id="name" type="text" class="form-control" placeholder="Название" formControlName="name">
+    <ul>
+      <li *ngFor="let instructor of team.instructors">
+        <span>{{ instructor.shortName }}</span><i class="glyphicon glyphicon-remove" (click)="removeInstructor(instructor)"></i>
+      </li>
+    </ul>
   </div>
   <div class="form-group">
-    <label for="amount">Количество участников</label>
-    <input id="amount" type="text" class="form-control" placeholder="Количество участников" formControlName="count">
+    <label for="instructor">Инструктор</label>
+    <input auto-complete
+           id="instructor"
+           [source]="allInstructors"
+           [display-property-name]="'name'"
+           [no-match-found-text]="'Нет такого инструктора'"
+           [list-formatter]="instructorsListFormatter"
+           [loading-text]="'Ищем...'"
+           [accept-user-input]="false"
+           class="form-control"
+           placeholder="Инструктор"
+           formControlName="instructor">
+    <button type="button" class="btn btn-primary" (click)="addInstructor()" [disabled]="form.invalid">Добавить</button>
   </div>
   <button type="submit" class="btn btn-default">Создать</button>
 </form>

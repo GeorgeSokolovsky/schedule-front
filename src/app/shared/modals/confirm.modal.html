@@ -1,0 +1,12 @@
+<modal #modal>
+  <modal-header>
+    Confirm
+  </modal-header>
+  <modal-content>
+    {{ question }}
+  </modal-content>
+  <modal-footer>
+    <button type="button" class="btn btn-success" (click)="onAgree()">Да</button>
+    <button type="button" class="btn btn-error" (click)="onDisagree()">Нет</button>
+  </modal-footer>
+</modal>
