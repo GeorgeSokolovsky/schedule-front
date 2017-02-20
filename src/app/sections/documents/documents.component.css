@@ -1,0 +1,15 @@
+li {
+  list-style-type: none;
+  display: inline-block;
+  width: 100%;
+}
+
+a {
+  float: right;
+  margin-left: 10px;
+}
+
+span {
+    display: block;
+    margin-top: 6px;
+}
