@@ -7,23 +7,16 @@
           <th class="number_team" rowspan="2">№ Команд</th>
           <th colspan="4">Дата проведения</th>
         </tr>
-        <tr class="dates">
+        <tr>
           <td>01.02.2012</td>
           <td>02.03.2013</td>
           <td>03.04.2014</td>
           <td>04.05.2015</td>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngFor="let team of teams">
         <tr>
-          <td>1</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>2</td>
+          <td>{{team.id}}</td>
           <td></td>
           <td></td>
           <td></td>
