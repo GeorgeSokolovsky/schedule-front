@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms"
 import * as _ from 'lodash';
 
@@ -40,8 +40,8 @@ export class TeamFormComponent extends BaseForm implements OnInit {
 
   public create($event: Event): void {
     $event.preventDefault();
-
     console.log(this.team);
+    this.team = new Team();
   }
 
   public removeInstructor(instructor: Instructor): void {

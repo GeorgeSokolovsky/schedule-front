@@ -1,6 +1,8 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
+import * as _ from 'lodash';
+
 import { BaseService } from '../base.service';
 import { Service } from '../../decorators/service.decorator';
 import { Team } from '../../models/team.model';
