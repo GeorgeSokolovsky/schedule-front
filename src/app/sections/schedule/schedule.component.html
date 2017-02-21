@@ -1,13 +1,13 @@
 <div class="container">
   <div class="table-responsive">
-    <table class="table table-bordered table-striped table-hover">
+    <table class="table table-bordered table-hover">
       <caption>Расписание проведения экзаменов</caption>
       <thead>
-        <tr>
+        <tr class="active">
           <th class="number_team" rowspan="2">№ Команд</th>
           <th colspan="4">Дата проведения</th>
         </tr>
-        <tr>
+        <tr class="active">
           <td>01.02.2012</td>
           <td>02.03.2013</td>
           <td>03.04.2014</td>
@@ -16,7 +16,7 @@
       </thead>
       <tbody *ngFor="let team of teams">
         <tr>
-          <td>{{team.id}}</td>
+          <td class="active">{{team.id}}</td>
           <td></td>
           <td></td>
           <td></td>

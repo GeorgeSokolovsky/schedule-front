@@ -16,4 +16,5 @@ export class ScheduleComponent implements OnInit {
   ngOnInit(){
     this.teams = this.teamsService.getTestData();
   }
+  
 }
