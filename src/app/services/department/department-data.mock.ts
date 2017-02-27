@@ -4,7 +4,7 @@ import { instructors } from '../instructors/instructors-data.mock';
 export const departments: Array<Department> = [
     {
         id: 1,
-        name: 'депортамент 1',
+        name: 'Кафедра 1',
         facultyId: 1,
         instructors:[
             instructors[0],
@@ -13,7 +13,7 @@ export const departments: Array<Department> = [
     },
     {
         id: 2,
-        name: 'депортамент 2',
+        name: 'Кафедра 2',
         facultyId: 2,
         instructors:[
             instructors[1],
@@ -22,7 +22,7 @@ export const departments: Array<Department> = [
     },
     {
         id: 3,
-        name: 'депортамент 3',
+        name: 'Кафедра 3',
         facultyId: 3,
         instructors:[
             instructors[4],
