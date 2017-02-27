@@ -5,7 +5,7 @@ import { BaseService } from '../base.service';
 import { Service } from '../../decorators/service.decorator';
 
 import { Faculty } from '../../models/faculty.model';
-import { facultys } from './faculty-data.mock';
+import { faculties } from './faculty-data.mock';
 /**
  * Сервис для работы с сущностью Faculty
  */
@@ -20,11 +20,11 @@ export class FacultyService extends BaseService<Faculty> {
   }
 
   public getTestData(): Array<Faculty> {
-    return facultys;
+    return faculties;
   }
 
   public inspection(): string {
-    return facultys[0].name;
+    return faculties[0].name;
   }
 }
 
