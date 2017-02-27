@@ -17,6 +17,8 @@ import { TeamsService } from './services/teams/teams.service';
 import { TeamFormComponent } from './sections/teams/team-form/team-form.component';
 import { InstructorsService } from './services/instructors/instructors.service';
 import { SubjectsService } from './services/subjects/subjects.service';
+import { FacultiesService } from './services/faculties/faculties.service';
+import { DepartmentsService } from './services/departments/departments.service';
 import { ConfirmComponent } from './shared/modals/confirm.modal';
 
 @NgModule({
@@ -43,7 +45,9 @@ import { ConfirmComponent } from './shared/modals/confirm.modal';
   providers: [
     TeamsService,
     InstructorsService,
-    SubjectsService
+    SubjectsService,
+    FacultiesService,
+    DepartmentsService
   ],
   bootstrap: [AppComponent]
 })
