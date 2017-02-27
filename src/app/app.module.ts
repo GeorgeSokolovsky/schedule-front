@@ -19,6 +19,7 @@ import { InstructorsService } from './services/instructors/instructors.service';
 import { SubjectsService } from './services/subjects/subjects.service';
 import { ConfirmComponent } from './shared/modals/confirm.modal';
 
+
 import { FacultyService } from './services/facults/faculty.service';
 import { DepartmentsService } from './services/department/department.service';
 
