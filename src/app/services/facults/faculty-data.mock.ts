@@ -1,7 +1,7 @@
 import { Faculty } from '../../models/faculty.model';
 import { departments } from '../department/department-data.mock';
 
-export const facultys: Array<Faculty> = [
+export const faculties: Array<Faculty> = [
   {  
     id: 1,
     name: 'факультет 1',
