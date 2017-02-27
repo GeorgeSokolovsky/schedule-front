@@ -8,7 +8,7 @@ import { Department } from '../../models/department.model';
 import { departments } from './department-data.mock';
 
 /**
- * Сервис для работы с сущностью Предмет
+ * Сервис для работы с сущностью Кафедра
  */
 @Service({
   model: Department,
