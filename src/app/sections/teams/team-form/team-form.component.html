@@ -1,5 +1,4 @@
 <form [formGroup]="form" (submit)="create($event)">
-
   <div class="form-group">
     <ul>
       <li *ngFor="let instructor of team.instructors">
@@ -9,8 +8,8 @@
   </div>
   <div class="form-group">
     <label for="faculty" class="control-label">Факультет</label>
-    <select id="faculty" class="form-control" (change)="filterInstructorsByFaculty()">
-      <option value="" id="default" selected="select">Выберите факультет</option>
+    <select id="faculty" class="form-control" (change)="filterInstructor($event.target.value)">
+      <option value="0" id="default" selected="select">Выберите факультет</option>
       <option *ngFor="let faculty of faculties" [value]="faculty.id">
               {{ faculty.name }}
       </option>
@@ -26,8 +25,7 @@
            [accept-user-input]="false"
            class="form-control"
            placeholder="Инструктор"
-           formControlName="instructor"
-           disabled="true">
+           formControlName="instructor">
     <button type="button" class="btn btn-primary" (click)="addInstructor()" [disabled]="form.invalid">Добавить</button>
   </div>
   <button type="submit" class="btn btn-default">Создать</button>

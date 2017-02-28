@@ -19,6 +19,7 @@ import { FacultiesService } from '../../../services/faculties/faculties.service'
 })
 export class TeamFormComponent extends BaseForm implements OnInit {
   @Input() public team: Team;
+  public allInstructors: Array<Instructor>;
   public instructors: Array<Instructor>;
   public faculties: Array<Faculty>;
 
@@ -36,7 +37,8 @@ export class TeamFormComponent extends BaseForm implements OnInit {
     });
 
     this.faculties = this.facultiesService.getTestData();
-    this.instructors = this.instructorsService.getTestData();
+    this.allInstructors = this.instructorsService.getTestData();
+    this.instructors = this.allInstructors;
 
     if (!_.isUndefined(this.team)) {
       this.fillFromObject(this.team);
@@ -45,17 +47,18 @@ export class TeamFormComponent extends BaseForm implements OnInit {
     }
   }
 
-  // Метод выполняющий фильтрацию инструкторов, при выборе факультета.
-  private filterInstructorsByFaculty(): void{
-    $("#default").hide();
-    $("#instructor").prop("disabled", false);
-    let index = $("#faculty").val() - 1; // id выбранного факультета в select - 1
-    let result;
-    for (let i = 0; i != this.faculties[index].departments.length; i++){
-      result = [].concat(result, this.faculties[index].departments[i].instructors);
+  public filterInstructor(facultyId: number): void {
+    // проверка что не выбран пустой id
+    if (facultyId > 0) {
+      let faculty = _.find(this.faculties, ['id', Number(facultyId)]);
+      let departmentsIds = _.map(faculty.departments, 'id');
+      this.instructors = _.filter(this.allInstructors, (instructor) => {
+        return _.includes(departmentsIds, instructor.departmentId);
+      });
+    } else {
+      this.instructors = this.allInstructors;
     }
-    result.splice(0, 1);
-    this.instructors = result;
+    this.updateInstructors();
   }
 
   public create($event: Event): void {
@@ -76,5 +79,9 @@ export class TeamFormComponent extends BaseForm implements OnInit {
 
   public instructorsListFormatter(data: Instructor) : string {
     return data.name;
+  }
+
+  public updateInstructors(): void{
+    this.form.controls['instructor'].setValue(null);
   }
 }
