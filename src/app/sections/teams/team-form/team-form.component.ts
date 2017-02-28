@@ -5,12 +5,10 @@ import * as _ from 'lodash';
 import { Team } from '../../../models/team.model';
 import { BaseForm } from '../../../shared/forms/base-form';
 import { Instructor } from '../../../models/instructor.model';
-import { InstructorsService } from '../../../services/instructors/instructors.service';
-
-
 import { Faculty } from '../../../models/faculty.model';
-import { FacultyService } from '../../../services/facults/faculty.service';
-
+import { Department } from '../../../models/department.model';
+import { InstructorsService } from '../../../services/instructors/instructors.service';
+import { FacultiesService } from '../../../services/faculties/faculties.service';
 
 @Component({
     moduleId: module.id,
@@ -21,13 +19,13 @@ import { FacultyService } from '../../../services/facults/faculty.service';
 export class TeamFormComponent extends BaseForm implements OnInit {
   @Input() public team: Team;
   public allInstructors: Array<Instructor>;
-
-  public allFacults: Array<Faculty>;
+  public instructors: Array<Instructor>;
+  public faculties: Array<Faculty>;
 
   public constructor(
     private formBuilder: FormBuilder,
     private instructorsService: InstructorsService,
-    private facultyService: FacultyService
+    private facultiesService: FacultiesService
   ){
     super();
   }
@@ -37,14 +35,31 @@ export class TeamFormComponent extends BaseForm implements OnInit {
       instructor: [null, Validators.required]
     });
 
+    this.faculties = this.facultiesService.getTestData();
     this.allInstructors = this.instructorsService.getTestData();
-    this.allFacults = this.facultyService.getTestData();
-    
+    this.instructors = this.allInstructors;
+
     if (!_.isUndefined(this.team)) {
       this.fillFromObject(this.team);
     } else {
       this.team = new Team();
     }
+  }
+
+  public filterInstructor(facultyId: number): void {
+    // проверка что не выбран пустой id
+    if (facultyId) {
+      const faculty = _.find(this.faculties, ['id', Number(facultyId)]);
+      const departmentsIds = _.map(faculty.departments, 'id');
+
+      this.instructors = _.filter(this.allInstructors, (instructor) => {
+        return _.includes(departmentsIds, instructor.departmentId);
+      });
+    } else {
+      this.instructors = this.allInstructors;
+    }
+
+    this.updateInstructors();
   }
 
   public create($event: Event): void {
@@ -65,5 +80,9 @@ export class TeamFormComponent extends BaseForm implements OnInit {
 
   public instructorsListFormatter(data: Instructor) : string {
     return data.name;
+  }
+
+  public updateInstructors(): void{
+    this.form.controls['instructor'].setValue(null);
   }
 }
