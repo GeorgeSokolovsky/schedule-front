@@ -21,6 +21,11 @@ import { FacultiesService } from './services/faculties/faculties.service';
 import { DepartmentsService } from './services/departments/departments.service';
 import { ConfirmComponent } from './shared/modals/confirm.modal';
 
+
+import { FacultyService } from './services/facults/faculty.service';
+import { DepartmentsService } from './services/department/department.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,

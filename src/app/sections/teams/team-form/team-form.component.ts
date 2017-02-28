@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms"
 import * as _ from 'lodash';
-import * as $ from 'jquery';
 
 import { Team } from '../../../models/team.model';
 import { BaseForm } from '../../../shared/forms/base-form';
