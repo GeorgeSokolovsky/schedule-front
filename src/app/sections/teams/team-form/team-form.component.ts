@@ -48,15 +48,17 @@ export class TeamFormComponent extends BaseForm implements OnInit {
 
   public filterInstructor(facultyId: number): void {
     // проверка что не выбран пустой id
-    if (facultyId > 0) {
-      let faculty = _.find(this.faculties, ['id', Number(facultyId)]);
-      let departmentsIds = _.map(faculty.departments, 'id');
+    if (facultyId) {
+      const faculty = _.find(this.faculties, ['id', Number(facultyId)]);
+      const departmentsIds = _.map(faculty.departments, 'id');
+
       this.instructors = _.filter(this.allInstructors, (instructor) => {
         return _.includes(departmentsIds, instructor.departmentId);
       });
     } else {
       this.instructors = this.allInstructors;
     }
+
     this.updateInstructors();
   }
 

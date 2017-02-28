@@ -9,7 +9,7 @@
   <div class="form-group">
     <label for="faculty" class="control-label">Факультет</label>
     <select id="faculty" class="form-control" (change)="filterInstructor($event.target.value)">
-      <option value="0" id="default" selected="select">Выберите факультет</option>
+      <option value="" id="default" selected="selected">Выберите факультет</option>
       <option *ngFor="let faculty of faculties" [value]="faculty.id">
               {{ faculty.name }}
       </option>
