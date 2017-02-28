@@ -4,7 +4,8 @@
       <caption>Расписание проведения экзаменов</caption>
       <thead>
         <tr class="active">
-          <th rowspan="2" class="number_team">№ Команд</th>
+          <th rowspan="2" class="number_team">№</th>
+          <th rowspan="2" class="number_team">Команда</th>
           <th rowspan="2" class="number_team">Ответственные<br>организаторы</th>
           <th colspan="4">Дата проведения</th>
         </tr>
@@ -18,12 +19,18 @@
       <tbody *ngFor="let team of teams">
         <tr>
           <td class="active">{{team.id}}</td>
-          <td class="active" align="left">
+          <td class="active team" align="left">
             <span>Команда {{team.id}}</span>
             <ul *ngFor="let instructor of team.instructors">
-              <li>{{instructor.shortName}}</li>
+              <li>
+                <i class="glyphicon glyphicon-chevron-right" 
+                   (click)="addOrganizer(instructor, team.id)" 
+                   title="Сделать ответственным"></i>
+                {{instructor.shortName}}
+              </li>
             </ul>
           </td>
+          <td class="organizer"></td>
           <td></td>
           <td></td>
           <td></td>

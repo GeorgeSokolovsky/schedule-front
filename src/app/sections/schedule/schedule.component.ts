@@ -16,4 +16,15 @@ export class ScheduleComponent implements OnInit {
   ngOnInit(){
     this.teams = this.teamsService.getTestData();
   }
+
+  addOrganizer(instructor, id) {
+    let organizers = document.getElementsByClassName('organizer');
+    organizers[id - 1].innerHTML = instructor.shortName;
+    let activeTeams = document.getElementsByClassName('active team');
+    let glyphs = activeTeams[id-1].getElementsByClassName('glyphicon glyphicon-chevron-right');    
+    for (let i = 0; i < glyphs.length; i++) {
+      let glyph = <HTMLElement> glyphs[i];
+      glyph.style.display = 'none';
+    }
+  }
 }
