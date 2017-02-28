@@ -18,3 +18,7 @@ tr {
 .number_team {
     vertical-align: middle;
 }
+
+li {
+    list-style-type: none;
+}
