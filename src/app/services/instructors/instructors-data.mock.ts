@@ -7,7 +7,7 @@ export const instructors: Array<Instructor> = [
     name: 'Андрей Николаевич Иванов',
     shortName: 'А.Н.Иванов',
     position: 'Зав. кафедры',
-    departmentId: 1,
+    departmentId: 5,
     subjects: [
       subjects[0],
       subjects[2]
@@ -49,11 +49,44 @@ export const instructors: Array<Instructor> = [
     id: 5,
     name: 'Алексей Александрович Красавин',
     shortName: 'А.А.Красавин',
-    position: 'преподаватель',
+    position: 'Преподаватель',
     departmentId: 4,
     subjects: [
       subjects[0],
       subjects[1]
+    ]
+  },
+  {
+    id: 6,
+    name: 'Никита Михайлович Семенник',
+    shortName: 'Н.М.Семенник',
+    position: 'Ассистент',
+    departmentId: 1,
+    subjects: [
+      subjects[0],
+      subjects[3]
+    ]
+  },
+  {
+    id: 7,
+    name: 'Евгений Александрович Плюшкин',
+    shortName: 'Е.А.Плюшкин',
+    position: 'Преподаватель',
+    departmentId: 6,
+    subjects: [
+      subjects[1],
+      subjects[4]
+    ]
+  },
+  {
+    id: 8,
+    name: 'Эдуард Романович Новиков',
+    shortName: 'Э.Р.Новиков',
+    position: 'Преподаватель',
+    departmentId: 7,
+    subjects: [
+      subjects[1],
+      subjects[2]
     ]
   }
 ];

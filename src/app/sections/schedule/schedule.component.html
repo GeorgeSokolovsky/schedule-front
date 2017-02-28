@@ -1,3 +1,53 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <caption>Расписание проведения экзаменов</caption>
+      <thead>
+        <tr class="active">
+          <th rowspan="2" class="number_team">№</th>
+          <th rowspan="2" class="number_team">Ответственные<br>организаторы</th>
+          <th rowspan="2" class="number_team">Команда</th>
+          <th colspan="4">Дата проведения</th>
+        </tr>
+        <tr class="active">
+          <td>01.01.2011</td>
+          <td>02.02.2012</td>
+          <td>03.03.2013</td>
+          <td>04.04.2014</td>
+        </tr>
+      </thead>
+      <tbody *ngFor="let team of teams">
+        <tr>
+          <td class="active">{{team.id}}</td>
+          <td class="organizer">
+            <template [ngIf]="hasMainOrganizer(team.id)">
+              <ul *ngFor="let instructor of mainOrganizers[team.id]">
+                <li>
+                  <i class="glyphicon glyphicon-remove-sign"
+                     (click)="removeOrganizer(instructor, team.id)"
+                     title="Удалить ответственного"></i>
+                  {{instructor.shortName}}
+                </li>
+              </ul>
+            </template>
+          </td>
+          <td class="active team" align="left">
+            <span>Команда {{team.id}}</span>
+            <ul *ngFor="let instructor of team.instructors">
+              <li>
+                <i *ngIf="!hasMainOrganizer(team.id)" class="glyphicon glyphicon-ok-sign"
+                   (click)="addOrganizer(instructor, team.id)"
+                   title="Сделать ответственным"></i>
+                {{instructor.shortName}}
+              </li>
+            </ul>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

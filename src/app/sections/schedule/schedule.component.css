@@ -1,0 +1,24 @@
+caption {
+    text-align: center;
+    font: 22px Verdana,Arial,sans-serif;
+    margin-bottom: 15px;
+}
+
+th {
+    text-align: center;
+    vertical-align: middle;
+    font: bold 16px Verdana,Arial,sans-serif;
+}
+
+tr {
+    text-align: center;
+    font: 14px Verdana,Arial,sans-serif;
+}
+
+.number_team {
+    vertical-align: middle;
+}
+
+li {
+    list-style-type: none;
+}
