@@ -7,6 +7,11 @@ import { BaseForm } from '../../../shared/forms/base-form';
 import { Instructor } from '../../../models/instructor.model';
 import { InstructorsService } from '../../../services/instructors/instructors.service';
 
+
+import { Faculty } from '../../../models/faculty.model';
+import { FacultyService } from '../../../services/facults/faculty.service';
+
+
 @Component({
     moduleId: module.id,
     selector: 'team-form',
@@ -17,9 +22,12 @@ export class TeamFormComponent extends BaseForm implements OnInit {
   @Input() public team: Team;
   public allInstructors: Array<Instructor>;
 
+  public allFacults: Array<Faculty>;
+
   public constructor(
     private formBuilder: FormBuilder,
-    private instructorsService: InstructorsService
+    private instructorsService: InstructorsService,
+    private facultyService: FacultyService
   ){
     super();
   }
@@ -30,7 +38,8 @@ export class TeamFormComponent extends BaseForm implements OnInit {
     });
 
     this.allInstructors = this.instructorsService.getTestData();
-
+    this.allFacults = this.facultyService.getTestData();
+    
     if (!_.isUndefined(this.team)) {
       this.fillFromObject(this.team);
     } else {
