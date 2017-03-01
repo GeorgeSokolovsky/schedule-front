@@ -72,7 +72,7 @@ export class TeamFormComponent extends BaseForm implements OnInit {
 
   public create($event: Event): void {
     $event.preventDefault();
-    console.log(this.team);
+    this.teamsService.addTestData(this.team);
     this.team = new Team();
   }
 
@@ -90,17 +90,7 @@ export class TeamFormComponent extends BaseForm implements OnInit {
     return data.name;
   }
 
-  public updateInstructors(): void{
+  public updateInstructors(): void {
     this.form.controls['instructor'].setValue(null);
-  }
-
-  public createNewTeam(){
-    let newTeam = new Team; 
-    alert("Новая команда добавлена");
-    newTeam.id = this.allTeam.length+1;    
-    newTeam.instructors = this.team.instructors.slice(0);
-    newTeam.responsibility = Responsibility.BIG_ROOM;
-
-    this.teamsService.addTestData(newTeam);
   }
 }
