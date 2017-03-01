@@ -9,6 +9,8 @@ import { Faculty } from '../../../models/faculty.model';
 import { Department } from '../../../models/department.model';
 import { InstructorsService } from '../../../services/instructors/instructors.service';
 import { FacultiesService } from '../../../services/faculties/faculties.service';
+import { TeamsService } from '../../../services/teams/teams.service';
+import { Responsibility } from '../../../enums/responsibility.enum';
 
 @Component({
     moduleId: module.id,
@@ -21,11 +23,15 @@ export class TeamFormComponent extends BaseForm implements OnInit {
   public allInstructors: Array<Instructor>;
   public instructors: Array<Instructor>;
   public faculties: Array<Faculty>;
+  public responsibiblityData:Array<string>; 
+  public allTeam: Array<Team>;
 
+  
   public constructor(
     private formBuilder: FormBuilder,
     private instructorsService: InstructorsService,
-    private facultiesService: FacultiesService
+    private facultiesService: FacultiesService,
+    private teamsService: TeamsService
   ){
     super();
   }
@@ -38,6 +44,8 @@ export class TeamFormComponent extends BaseForm implements OnInit {
     this.faculties = this.facultiesService.getTestData();
     this.allInstructors = this.instructorsService.getTestData();
     this.instructors = this.allInstructors;
+    this.responsibiblityData=["FLOOR", "ENTRANCE", "ROOM", "BIG_ROOM"];
+    this.allTeam = this.teamsService.getTestData();
 
     if (!_.isUndefined(this.team)) {
       this.fillFromObject(this.team);
@@ -64,7 +72,7 @@ export class TeamFormComponent extends BaseForm implements OnInit {
 
   public create($event: Event): void {
     $event.preventDefault();
-    console.log(this.team);
+    this.teamsService.addTestData(this.team);
     this.team = new Team();
   }
 
@@ -82,7 +90,7 @@ export class TeamFormComponent extends BaseForm implements OnInit {
     return data.name;
   }
 
-  public updateInstructors(): void{
+  public updateInstructors(): void {
     this.form.controls['instructor'].setValue(null);
   }
 }
