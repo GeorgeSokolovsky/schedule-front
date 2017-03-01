@@ -32,10 +32,9 @@ export class ScheduleComponent implements OnInit {
       this.mainOrganizers[id] = [];
     });
 
-    for (let i = 0; i < this.allDates.length; i++) {
-      if (this.years.indexOf(this.allDates[i].getFullYear()) < 0)
-        this.years.push(this.allDates[i].getFullYear());
-    } 
+    this.years = _.uniq(_.map(this.allDates, (item) => {
+      return item.getFullYear();
+    }));
   }
 
   /**
