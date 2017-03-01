@@ -23,4 +23,7 @@ export class TeamsService extends BaseService<Team> {
   public getTestData(): Array<Team> {
     return teams;
   }
+  public addTestData(newTeam: Team){
+    teams.push(newTeam);
+  }
 }
