@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { Team } from '../../models/team.model';
 import { TeamsService } from '../../services/teams/teams.service';
 import { Instructor } from '../../models/instructor.model';
+import { dates } from '../../services/dates/dates.mock';
 
 @Component({
   selector: 'schedule',
@@ -12,6 +13,9 @@ import { Instructor } from '../../models/instructor.model';
 })
 export class ScheduleComponent implements OnInit {
   public teams: Team[];
+  public allDates: Date[] = dates;
+  public dates: Date[] = [];
+  public years: number[] = [];
   public mainOrganizers: {
     [key: number]: Array<Instructor>
   } = {};
@@ -27,6 +31,10 @@ export class ScheduleComponent implements OnInit {
     _.forEach(this.teams, ({id}: Team) => {
       this.mainOrganizers[id] = [];
     });
+
+    this.years = _.uniq(_.map(this.allDates, (item) => {
+      return item.getFullYear();
+    }));
   }
 
   /**
@@ -57,5 +65,11 @@ export class ScheduleComponent implements OnInit {
    */
   public hasMainOrganizer(teamId: number): boolean {
     return !_.isEmpty(this.mainOrganizers[teamId]);
+  }
+
+  public filterYear(year: string): void {
+    this.dates = _.filter(this.allDates, (item) => {
+      return item.getFullYear().toString() === year;
+    });
   }
 }
