@@ -5,8 +5,6 @@ import { BaseService } from '../base.service';
 import { Service } from '../../decorators/service.decorator';
 import { Department } from '../../models/department.model';
 
-import { departments } from './departments-data.mock';
-
 /**
  * Сервис для работы с сущностью Кафедра
  */
