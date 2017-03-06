@@ -1,5 +1,8 @@
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 import { BaseService } from '../base.service';
 import { Service } from '../../decorators/service.decorator';
@@ -11,16 +14,12 @@ import { subjects } from './subjects-data.mock';
  */
 @Service({
   model: Subject,
-  entityPath: 'subjects'
+  entityPath: 'subject'
 })
 @Injectable()
 export class SubjectsService extends BaseService<Subject> {
   public constructor(private http: Http) {
     super(http);
-  }
-
-  public getTestSubjects(): Array<Subject> {
-    return subjects;
   }
 }
 

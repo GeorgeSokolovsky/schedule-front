@@ -12,7 +12,7 @@ import { teams } from '../teams/teams-data.mock';
  */
 @Service({
   model: Team,
-  entityPath: 'teams'
+  entityPath: 'team'
 })
 @Injectable()
 export class TeamsService extends BaseService<Team> {
