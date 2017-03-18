@@ -7,7 +7,7 @@ import { getServiceMetadata, ServiceDecoratorData } from '../decorators/service.
 
 export class BaseService<T extends Entity> {
   // todo поменять, когда API будет доступно
-  private static API_URL: string = 'http://localhost:9000';
+  private static API_URL: string = 'http://localhost:3000/api/public/v1';
 
   public constructor(private httpInstance: Http) {
   }

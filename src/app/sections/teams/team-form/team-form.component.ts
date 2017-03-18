@@ -23,9 +23,8 @@ export class TeamFormComponent extends BaseForm implements OnInit {
   public allInstructors: Array<Instructor>;
   public instructors: Array<Instructor>;
   public faculties: Array<Faculty>;
+  public teams: Array<Team>;
   public responsibiblityData:Array<string>; 
-  public allTeam: Array<Team>;
-
   
   public constructor(
     private formBuilder: FormBuilder,
@@ -45,7 +44,7 @@ export class TeamFormComponent extends BaseForm implements OnInit {
     this.allInstructors = this.instructorsService.getTestData();
     this.instructors = this.allInstructors;
     this.responsibiblityData=["FLOOR", "ENTRANCE", "ROOM", "BIG_ROOM"];
-    this.allTeam = this.teamsService.getTestData();
+    this.teamsService.findAll().subscribe((data) => this.teams = data);
 
     if (!_.isUndefined(this.team)) {
       this.fillFromObject(this.team);
@@ -72,7 +71,8 @@ export class TeamFormComponent extends BaseForm implements OnInit {
 
   public create($event: Event): void {
     $event.preventDefault();
-    this.teamsService.addTestData(this.team);
+    this.teamsService.create(this.team); // не могу понять: работает или нет
+    //this.teamsService.addTestData(this.team);
     this.team = new Team();
   }
 

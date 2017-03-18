@@ -5,14 +5,12 @@ import { BaseService } from '../base.service';
 import { Service } from '../../decorators/service.decorator';
 import { Team } from '../../models/team.model';
 
-import { teams } from '../teams/teams-data.mock';
-
 /**
  * Сервис созданный для примера, как использовать BaseService и декоратор Service
  */
 @Service({
   model: Team,
-  entityPath: 'teams'
+  entityPath: 'team'
 })
 @Injectable()
 export class TeamsService extends BaseService<Team> {
@@ -20,11 +18,7 @@ export class TeamsService extends BaseService<Team> {
     super(http);
   }
 
-  public getTestData(): Array<Team> {
-    return teams;
-  }
-
   public addTestData(newTeam: Team){
-    teams.push(newTeam);
+    //teams.push(newTeam);
   }
 }

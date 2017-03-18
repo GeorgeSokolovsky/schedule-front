@@ -19,7 +19,7 @@ export class TeamListComponent implements OnInit{
   public constructor(private teamService: TeamsService){}
 
   public ngOnInit(): void {
-    this.teams = this.teamService.getTestData();
+    this.teamService.findAll().subscribe((data) => this.teams = data);
   }
 
   public editTeam(team: Team): void {

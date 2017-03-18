@@ -26,7 +26,7 @@ export class ScheduleComponent implements OnInit {
    * @inheritDoc
    */
   ngOnInit(){
-    this.teams = this.teamsService.getTestData();
+    this.teamsService.findAll().subscribe((data) => this.teams = data);
 
     _.forEach(this.teams, ({id}: Team) => {
       this.mainOrganizers[id] = [];
