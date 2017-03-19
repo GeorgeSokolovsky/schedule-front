@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 team_list">
-      <team-list (onEdit)="onEdit($event)"></team-list>
+      <team-list (onEdit)="onEdit($event)" #list></team-list>
     </div>
     <div class="col-md-7 col-md-offset-1 team_form">
-      <team-form [team]="editTeam"></team-form>
+      <team-form [team]="editTeam" (onAdd)="onAdd()"></team-form>
     </div>
   </div>
 </div>

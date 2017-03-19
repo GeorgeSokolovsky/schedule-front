@@ -20,6 +20,7 @@ import { SubjectsService } from './services/subjects/subjects.service';
 import { FacultiesService } from './services/faculties/faculties.service';
 import { DepartmentsService } from './services/departments/departments.service';
 import { ConfirmComponent } from './shared/modals/confirm.modal';
+import { TestingService } from './services/testings/testings.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ConfirmComponent } from './shared/modals/confirm.modal';
     InstructorsService,
     SubjectsService,
     FacultiesService,
-    DepartmentsService
+    DepartmentsService,
+    TestingService
   ],
   bootstrap: [AppComponent]
 })

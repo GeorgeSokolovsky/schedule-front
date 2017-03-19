@@ -27,3 +27,7 @@ li {
     float: right;
     width: 150px;
 }
+
+.invisible {
+    background-color: white;
+}

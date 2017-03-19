@@ -1,7 +1,7 @@
 <form [formGroup]="form" (submit)="create($event)">
   <div class="form-group">
     <ul>
-      <li *ngFor="let instructor of team.instructors">
+      <li *ngFor="let instructor of _team.instructors">
         <span>{{ instructor.shortName }}</span><i class="glyphicon glyphicon-remove" (click)="removeInstructor(instructor)"></i>
       </li>
     </ul>
@@ -24,17 +24,16 @@
               id="instructor"
               [source]="instructors"
               [display-property-name]="'name'"
-              [no-match-found-text]="'Нет такого инструктора'"
+              [no-match-found-text]="'Нет такого инструктора или данные не загружены'"
               [list-formatter]="instructorsListFormatter"
-              [loading-text]="'Ищем...'"
               [accept-user-input]="false"
               class="form-control"
               placeholder="Инструктор"
-              formControlName="instructor">
+              formControlName="instructors">
         <button type="button" class="btn btn-default" (click)="addInstructor()" [disabled]="form.invalid">Добавить</button>
       </div>
       <div class="submit">
-        <button type="submit" class="btn btn-default">Создать</button>
+        <button type="submit" class="btn btn-default">{{ isEdit ? 'Обновить' : 'Создать'}}</button>
       </div>
     </div>
   </div>
