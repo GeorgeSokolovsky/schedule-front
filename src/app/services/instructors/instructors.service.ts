@@ -12,16 +12,12 @@ import { instructors } from './instructors-data.mock';
  */
 @Service({
   model: Instructor,
-  entityPath: 'subjects'
+  entityPath: 'instructor'
 })
 @Injectable()
 export class InstructorsService extends BaseService<Instructor> {
   public constructor(private http: Http) {
     super(http);
-  }
-
-  public getTestData(): Array<Instructor> {
-    return instructors;
   }
 }
 

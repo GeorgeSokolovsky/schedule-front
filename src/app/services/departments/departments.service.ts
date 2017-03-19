@@ -1,27 +1,21 @@
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 import { BaseService } from '../base.service';
 import { Service } from '../../decorators/service.decorator';
 import { Department } from '../../models/department.model';
-
-import { departments } from './departments-data.mock';
 
 /**
  * Сервис для работы с сущностью Кафедра
  */
 @Service({
   model: Department,
-  entityPath: 'instructors'
+  entityPath: 'department'
 })
 @Injectable()
 export class DepartmentsService extends BaseService<Department> {
   public constructor(private http: Http) {
     super(http);
-  }
-
-  public getTestData(): Array<Department> {
-    return departments;
   }
 }
 

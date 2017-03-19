@@ -22,3 +22,12 @@ tr {
 li {
     list-style-type: none;
 }
+
+.years {
+    float: right;
+    width: 150px;
+}
+
+.invisible {
+    background-color: white;
+}

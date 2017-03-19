@@ -12,7 +12,7 @@ import { faculties } from './faculties-data.mock';
  */
 @Service({
   model: Faculty,
-  entityPath: 'departments'
+  entityPath: 'faculty'
 })
 @Injectable()
 export class FacultiesService extends BaseService<Faculty> {

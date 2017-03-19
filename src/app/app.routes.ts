@@ -6,7 +6,7 @@ import { ScheduleComponent } from './sections/schedule/schedule.component';
 import { DocumentsComponent } from './sections/documents/documents.component';
 
 const routes: Routes = [
-  { path: '', component: TeamsComponent },
+  { path: '', component: ScheduleComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'schedule', component: ScheduleComponent },
   { path: 'documents', component: DocumentsComponent }

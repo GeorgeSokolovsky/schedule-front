@@ -1,51 +1,85 @@
 <div class="container">
   <div class="table-responsive">
+    <select id="year" class="form-control years" (change)="filterYear($event.target.value)">
+      <option *ngFor="let year of years" [value]="year" [selected]="isYearSelected(year)">
+        {{year}}
+      </option>
+    </select>
     <table class="table table-bordered table-hover">
-      <caption>Расписание проведения экзаменов</caption>
+      <caption>Расписание проведения тестирований</caption>
       <thead>
         <tr class="active">
-          <th rowspan="2" class="number_team">№</th>
-          <th rowspan="2" class="number_team">Ответственные<br>организаторы</th>
-          <th rowspan="2" class="number_team">Команда</th>
-          <th colspan="4">Дата проведения</th>
+          <th rowspan="3" class="number_team">Ф-т</th>
+          <th rowspan="3" class="number_team">Ответственные<br>организаторы</th>
+          <th rowspan="3" class="number_team">Команда</th>
+          <th [attr.colspan]="testings.length">Дата проведения</th>
         </tr>
         <tr class="active">
-          <td>01.01.2011</td>
-          <td>02.02.2012</td>
-          <td>03.03.2013</td>
-          <td>04.04.2014</td>
+          <td *ngFor="let testing of testings">{{testing.date.toLocaleDateString()}}</td>
+        </tr>
+        <tr class="active">
+          <td *ngFor="let testing of testings">{{testing.subject.shortName}}</td>
         </tr>
       </thead>
       <tbody *ngFor="let team of teams">
         <tr>
-          <td class="active">{{team.id}}</td>
+          <td class="active">
+            <ul>
+              <li *ngFor="let instructor of team.instructors">
+                {{getFaculty(instructor)}}
+              </li>
+            </ul>
+          </td>
           <td class="organizer">
-            <template [ngIf]="hasMainOrganizer(team.id)">
-              <ul *ngFor="let instructor of mainOrganizers[team.id]">
-                <li>
-                  <i class="glyphicon glyphicon-remove-sign"
-                     (click)="removeOrganizer(instructor, team.id)"
-                     title="Удалить ответственного"></i>
-                  {{instructor.shortName}}
-                </li>
-              </ul>
-            </template>
+            <ul *ngFor="let instructor of mainOrganizers[team.id]">
+              <li>
+                <i class="glyphicon glyphicon-remove-sign"
+                   (click)="removeOrganizer(instructor, team.id)"
+                   title="Удалить ответственного"></i>
+                {{instructor.shortName}}
+              </li>
+            </ul>
           </td>
           <td class="active team" align="left">
-            <span>Команда {{team.id}}</span>
-            <ul *ngFor="let instructor of team.instructors">
-              <li>
-                <i *ngIf="!hasMainOrganizer(team.id)" class="glyphicon glyphicon-ok-sign"
+            <ul>
+              <li *ngFor="let instructor of team.instructors">
+                <i class="glyphicon glyphicon-ok-sign"
                    (click)="addOrganizer(instructor, team.id)"
                    title="Сделать ответственным"></i>
                 {{instructor.shortName}}
               </li>
             </ul>
           </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td *ngFor="let testing of testings">
+            <div class="form-inline" *ngFor="let instructor of team.instructors">
+              <div class="form-group" *ngIf="!onFloor(instructor, testing)" (click)="setWorking(instructor, testing)">
+                <input type="checkbox"
+                       class="invisible"
+                       [attr.checked]="isWorking(instructor.id, testing)">
+                <i *ngIf="isWorking(instructor.id, testing)" class="glyphicon glyphicon-remove"></i>
+              </div>
+              <div class="form-group">
+                <select
+                  *ngIf="onFloor(instructor, testing)"
+                  id="floor"
+                  class="form-control"
+                  (change)="changeFloor($event.target.value, instructor, testing)"
+                >
+                  <option *ngFor="let floor of floors"
+                          [value]="floor"
+                          [selected]="isFloorSelected(floor, instructor, testing)">
+                    {{floor}} этаж
+                  </option>
+                </select>
+                <i *ngIf="!onFloor(instructor, testing)"
+                   (click)="setFloor(instructor, testing, team)"
+                   class="glyphicon glyphicon-asterisk"></i>
+                <i *ngIf="onFloor(instructor, testing)"
+                   (click)="removeFromFloor(instructor, testing, team)"
+                   class="glyphicon glyphicon-remove-sign"></i>
+              </div>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>

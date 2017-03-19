@@ -3,19 +3,15 @@ import { Http } from '@angular/http';
 
 import { BaseService } from '../base.service';
 import { Service } from '../../decorators/service.decorator';
-import { Subject } from '../../models/subject.model';
+import { Testing } from '../../models/testing.model';
 
-/**
- * Сервис для работы с сущностью Предмет
- */
-@Service({
-  model: Subject,
-  entityPath: 'subject'
-})
 @Injectable()
-export class SubjectsService extends BaseService<Subject> {
+@Service({
+  model: Testing,
+  entityPath: 'testing'
+})
+export class TestingService extends BaseService<Testing> {
   public constructor(private http: Http) {
     super(http);
   }
 }
-

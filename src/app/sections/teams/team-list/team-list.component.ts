@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 import { Team } from '../../../models/team.model';
 import { TeamsService } from '../../../services/teams/teams.service';
 import { ConfirmComponent } from '../../../shared/modals/confirm.modal';
+import { Observable } from 'rxjs';
 
 @Component({
   moduleId: module.id,
@@ -19,14 +20,13 @@ export class TeamListComponent implements OnInit{
   public constructor(private teamService: TeamsService){}
 
   public ngOnInit(): void {
-    this.teams = this.teamService.getTestData();
+    this.loadTeams();
   }
 
   public editTeam(team: Team): void {
     this.confirmComponent
       .show(`Вы действительно хотите отредактировать команду номер ${team.id}`)
       .subscribe((result: boolean) => {
-        console.log(`Попытка отредактировать команду номер ${team.id} с результатом ${result}`);
         if (result) {
           this.onEdit.emit(team);
         }
@@ -36,8 +36,15 @@ export class TeamListComponent implements OnInit{
   public removeTeam(team: Team): void {
     this.confirmComponent
       .show(`Вы действительно хотите удалить команду номер ${team.id}`)
-      .subscribe((result: boolean) => {
-        console.log(`Попытка удалить команду номер ${team.id} с результатом ${result}`);
-      });
+      .switchMap((result: boolean) => {
+        return result
+          ? this.teamService.remove(team.id)
+          : Observable.throw('remove canceled');
+      })
+      .subscribe(() => this.loadTeams(), () => {});
+  }
+
+  public loadTeams(): void {
+    this.teamService.findAll().subscribe((data) => this.teams = data);
   }
 }
